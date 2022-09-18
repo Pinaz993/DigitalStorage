@@ -64,7 +64,6 @@ end
 --- This is run when the game first starts. Any setup code needs to be run from here.
 --- Return 'Success' if all is well. Otherwise, return an error code.
 function init()
-    api_log("Attempting to init DS.")
     api_set_devmode(true)
-    return Success
+    return "Success"
 end
