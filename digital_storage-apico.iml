@@ -7,11 +7,12 @@
       <sourceFolder url="file://$MODULE_DIR$/modules" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/scripts" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/sprites" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/sprites/*" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
       <excludePattern pattern="*.iml" />
     </content>
     <orderEntry type="jdk" jdkName="Lua" jdkType="Lua SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="example_mod" level="project" />
+    <orderEntry type="library" name="apicoapi" level="project" />
   </component>
 </module>

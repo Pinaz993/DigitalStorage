@@ -29,7 +29,10 @@
 ---     hive or apiary.
 ---
 --- Methodology:
---- Objects are defined in a standalone .lua file, and contain prototypical objects as needed.
+--- Objects are defined in a standalone .lua file, and contain prototypical objects as needed. Object definitions are
+--- defined in said .lua file at global scope, and also include any static variables that need to be used elsewhere,
+--- including in scripts.
+--- Scripts in the script module defer ALL logic to methods written in the .lua file that they best fit in.
 ---
 
 --TODO: Frequency Selection Screen for implementation in all devices that need it.
@@ -55,15 +58,19 @@ MOD_NAME = "digital_storage"
 --- Modules are additional Lua files we can put code in, I think.
 function register()
     return {
-        name = MOD_NAME
+        name = MOD_NAME,
         --hooks = {}, -- Don't need any hooks just yet
-        --modules = {} -- Or any modules, though that may change.
+        modules = {"test_menu_item"} -- Or any modules, though that may change.
     }
 end
 
 --- This is run when the game first starts. Any setup code needs to be run from here.
 --- Return 'Success' if all is well. Otherwise, return an error code.
 function init()
+    --TODO: Set up error gathering mechanism to make sure that all the definition methods work smoothly.
     api_set_devmode(true)
+    define_test_object()
     return "Success"
 end
+
+--TODO: Write draw logic. Remember to write fail-fast.

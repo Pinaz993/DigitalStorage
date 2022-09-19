@@ -2,7 +2,7 @@
   <artifact build-on-make="true" name="CopyToModsDir">
     <output-path>$USER_HOME$/AppData/Local/APICO/mods/digital_storage</output-path>
     <root id="root">
-      <element id="module-source" name="digital_storage-apico" />
+      <element id="dir-copy" path="$PROJECT_DIR$" />
     </root>
   </artifact>
 </component>
