@@ -48,19 +48,22 @@
 --
 
 -- Mod Properties
-MOD_NAME = "digital_storage"
+DIGITAL_STORAGE = {}
+DIGITAL_STORAGE.MOD_NAME = "digital_storage"
+
+
 
 --- Register the mod with the game.
 ---
 --- Hooks are methods that are defined here, just like register() and init(). If we want to use them, we need to ask
 --- for them to be enabled for our mod in the hooks table.
 ---
---- Modules are additional Lua files we can put code in, I think.
+--- Modules are additional Lua files we can put code in.
 function register()
     return {
-        name = MOD_NAME,
-        --hooks = {}, -- Don't need any hooks just yet
-        modules = {"test_menu_item"} -- Or any modules, though that may change.
+        name = DIGITAL_STORAGE.MOD_NAME,
+        hooks = {"draw"}, -- Don't need any hooks just yet
+        modules = {"test_menu_item", "resonance_pylon"} -- Or any modules, though that may change.
     }
 end
 
@@ -70,7 +73,25 @@ function init()
     --TODO: Set up error gathering mechanism to make sure that all the definition methods work smoothly.
     api_set_devmode(true)
     define_test_object()
+    RESONANCE_PYLON.define()
+    DIGITAL_STORAGE.DRAW_OBJECTS = {RESONANCE_PYLON} -- A list of all objects that need to do special drawing.
     return "Success"
 end
 
---TODO: Write draw logic. Remember to write fail-fast.
+
+
+--- Runs on every frame. FAIL FAST!
+function draw()
+    -- Only thing we need to to is draw the highlight circle.
+    hover = api_get_highlighted("obj")
+    -- If we're hovering over an object, iterate through all objects in DIGITAL_STORAGE.DRAW_OBJECTS.
+    if hover ~= nil then for k, obj in pairs(DIGITAL_STORAGE.DRAW_OBJECTS) do
+        -- Does the object we're hovering over have an OID that matches that of the object we're considering?
+        if api_gp(hover, "oid") == DIGITAL_STORAGE.MOD_NAME .. "_" .. obj.id then
+            cam = api_get_camera_position() -- Grab the camera position.
+            obj.draw(
+                    api_gp(hover, "x") - cam.x, -- The X and Y coordinates of
+                    api_gp(hover, "y") - cam.y) -- the object in screen-space.
+        end -- Otherwise, try the next one.
+    end end -- No object or not one of ours? Do nothing.
+end
