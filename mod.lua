@@ -1,12 +1,12 @@
 ---
 --- Author: Patrick Shannon
---- Digital Storage (working title) is a mod originally fashioned after Applied Energistics and similar mods for
+--- Resonant Transfer is a mod originally fashioned after Applied Energistics and similar mods for
 --- Minecraft. However, due to the dissimilarities between APICO and Minecraft, a simpler implementation was decided
 --- upon.
 ---
---- Digital Storage focuses on the digital transfer and storage of inventory items and fluids. All devices depend on the
---- concept of honeycore resonance to achieve wireless transfer. Any dispatching device may dispatch items and fluids to
---- any receiving device on the same frequency. All fluid handling will ignore the `power` fluid, as it is a
+--- Resonant Transfer focuses on the wireless transfer and storage of inventory items and fluids. All devices depend on
+--- the concept of honeycore resonance to achieve wireless transfer. Any dispatching device may dispatch items and
+--- fluids to any receiving device on the same frequency. All fluid handling will ignore the `power` fluid, as it is a
 --- representation of bv.
 ---
 --- Devices:
@@ -48,8 +48,8 @@
 --
 
 -- Mod Properties
-DIGITAL_STORAGE = {}
-DIGITAL_STORAGE.MOD_NAME = "digital_storage"
+RESONANT_TRANSFER = {}
+RESONANT_TRANSFER.ID = "resonant_transfer"
 
 
 
@@ -61,7 +61,7 @@ DIGITAL_STORAGE.MOD_NAME = "digital_storage"
 --- Modules are additional Lua files we can put code in.
 function register()
     return {
-        name = DIGITAL_STORAGE.MOD_NAME,
+        name = RESONANT_TRANSFER.ID,
         hooks = {"draw"}, -- Don't need any hooks just yet
         modules = {"test_menu_item", "resonance_pylon"} -- Or any modules, though that may change.
     }
@@ -74,7 +74,7 @@ function init()
     api_set_devmode(true)
     define_test_object()
     RESONANCE_PYLON.define()
-    DIGITAL_STORAGE.DRAW_OBJECTS = {RESONANCE_PYLON} -- A list of all objects that need to do special drawing.
+    RESONANT_TRANSFER.DRAW_OBJECTS = { RESONANCE_PYLON} -- A list of all objects that need to do special drawing.
     return "Success"
 end
 
@@ -82,12 +82,11 @@ end
 
 --- Runs on every frame. FAIL FAST!
 function draw()
-    -- Only thing we need to to is draw the highlight circle.
-    hover = api_get_highlighted("obj")
-    -- If we're hovering over an object, iterate through all objects in DIGITAL_STORAGE.DRAW_OBJECTS.
-    if hover ~= nil then for k, obj in pairs(DIGITAL_STORAGE.DRAW_OBJECTS) do
+    hover = api_get_highlighted("obj") -- What object are we highlighting?
+    -- If we're hovering over an object, iterate through all objects in RESONANT_TRANSFER.DRAW_OBJECTS.
+    if hover ~= nil then for k, obj in pairs(RESONANT_TRANSFER.DRAW_OBJECTS) do
         -- Does the object we're hovering over have an OID that matches that of the object we're considering?
-        if api_gp(hover, "oid") == DIGITAL_STORAGE.MOD_NAME .. "_" .. obj.id then
+        if api_gp(hover, "oid") == RESONANT_TRANSFER.ID .. "_" .. obj.id then
             cam = api_get_camera_position() -- Grab the camera position.
             obj.draw(
                     api_gp(hover, "x") - cam.x, -- The X and Y coordinates of

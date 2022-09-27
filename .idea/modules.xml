@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/digital_storage-apico.iml" filepath="$PROJECT_DIR$/digital_storage-apico.iml" />
+      <module fileurl="file://$PROJECT_DIR$/resonant_transfer-apico.iml" filepath="$PROJECT_DIR$/resonant_transfer-apico.iml" />
     </modules>
   </component>
 </project>
