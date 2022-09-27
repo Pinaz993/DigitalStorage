@@ -1,0 +1,9 @@
+--- An interface for selecting the frequency that a device uses to dispatch/receive items.
+--- To fit with the bee theme, this will be accomplished, not with a text box, but with seven of hexagonal buttons
+--- that can be either activated or deactivated, corresponding to a 7 bit binary number stored in a string that
+--- all transactions will compare against. The buttons will be read right to left, top to bottom when encoding and
+--- decoding.
+---
+--TODO: Write encoding and decoding functions.
+--TODO: Write function for placing frequency buttons on windows.
+--TODO: Menu sprite

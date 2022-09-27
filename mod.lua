@@ -37,7 +37,6 @@
 
 --TODO: Frequency Selection Screen for implementation in all devices that need it.
 --TODO: Machine and Slot selection screen for implementation in all devices that need it.
---TODO: Research adding additional window button to DS menus.
 --TODO: Frequency management singleton
 --TODO: Filter screen for implementation for all devices that need it.
 --TODO: Implement Dispatcher
@@ -46,6 +45,8 @@
 --TODO: Implement Fluid Depot
 --TODO: Implement Resonance Pylon
 --
+
+-- TODO: Implement tabs in interface.
 
 -- Mod Properties
 RESONANT_TRANSFER = {}

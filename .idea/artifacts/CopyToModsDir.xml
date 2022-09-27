@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact build-on-make="true" name="CopyToModsDir">
-    <output-path>$USER_HOME$/AppData/Local/APICO/mods/digital_storage</output-path>
+    <output-path>$USER_HOME$/AppData/Local/APICO/mods/resonant_transfer</output-path>
     <root id="root">
       <element id="dir-copy" path="$PROJECT_DIR$" />
     </root>

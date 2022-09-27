@@ -1,7 +1,7 @@
 --- A simple static object that allows all other devices in this world to work in a range.
 --- Is not interactable.
 --- Renders a circle around itself when hovered over, like a hive with a queen in it.
---- Enables all DS objects in its range when placed. Maybe. Not sure about that yet.
+--- Enables all RT objects in its range when placed. Maybe. Not sure about that yet.
 --- Glows to some extent. Probably about as much as a pond-shine does.
 --- No collision, because that would be annoying.
 
