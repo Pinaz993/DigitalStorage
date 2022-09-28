@@ -85,7 +85,7 @@ end
 function draw()
     hover = api_get_highlighted("obj") -- What object are we highlighting?
     -- If we're hovering over an object, iterate through all objects in RESONANT_TRANSFER.DRAW_OBJECTS.
-    if hover ~= nil then for k, obj in pairs(RESONANT_TRANSFER.DRAW_OBJECTS) do
+    if hover ~= nil then for _, obj in pairs(RESONANT_TRANSFER.DRAW_OBJECTS) do
         -- Does the object we're hovering over have an OID that matches that of the object we're considering?
         if api_gp(hover, "oid") == RESONANT_TRANSFER.ID .. "_" .. obj.id then
             cam = api_get_camera_position() -- Grab the camera position.
