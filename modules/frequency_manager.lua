@@ -26,10 +26,12 @@ setmetatable(FREQUENCY_MANAGER, FREQUENCY_MANAGER) -- FREQUENCY_MANAGER acts as 
 FREQUENCY_MANAGER.proto = {} -- A prototypical frequency entry for FREQUENCY_MANAGER.
 FREQUENCY_MANAGER.proto.item_receivers = nil -- A number indexed ordered list to store all devices that can receive items.
 FREQUENCY_MANAGER.proto.fluid_receivers = nil -- Ditto, but for fluids
+
 function FREQUENCY_MANAGER.proto:transmit_items() -- A function for transmitting items to the first possible receiver.
     --TODO: Implement FREQUENCY_MANAGER.proto.transmit_items()
     --TODO: Decide on method signature for transmit_items() and transmit_fluids()
 end
+
 function FREQUENCY_MANAGER.proto:transmit_fluids() -- Again, ditto, but for fluids.
     --TODO: Implement FREQUENCY_MANAGER.proto.transmit_fluids()
 end
@@ -41,7 +43,7 @@ function FREQUENCY_MANAGER:__index(_, k) -- If someone tries to access an entry 
     -- Deal with instance members.
     rtn.item_receivers = {} --Instantiate an empty list for all item receivers on this frequency.
     rtn.fluid_receivers = {} -- Same for fluids.
-    rtn.freq = k -- Store the frequency string if we need it.
+    rtn.freq = k -- Store the frequency string in case we need it.
     self[k] = rtn -- Add the new entry to this manager.
     return rtn -- Return the new entry.
 end
