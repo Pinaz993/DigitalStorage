@@ -16,14 +16,11 @@
 ---    *Receiver: A device that places the item or fluid received from any dispatching machine on the same frequency in
 ---         the given slot(s) in the given menu object. Does not have an item or fluid buffer. Is powered by BV, and
 ---         uses a static amount per item or bl received. Very low bv cost on idle.
----    *Item Depot: A device that can receive, dispatch and store items. Has separate frequencies for reception and
----         dispatch. Can filter on both. Is powered by bv, and uses a static amount per item received or dispatched.
----         Very low bv cost on idle. Does not require bv to store items or be accessed. Will not accept transmissions
----         of items it cannot accept (i.e, the container is full, or there is no room for the items.)
----    *Fluid Depot: A device that can receive, dispatch, and store fluids. Has separate frequencies for reception and
----         dispatch. can filter on both. is powered by bv, and uses a static amount per item received or dispatched.
----         Very low bv cost on idle. Does not require bv to store fluids, or be accessed. Will not accept transmissions
----          of fluids it cannot accept (i.e. different fluid from what is in the tank, tank is full).
+---    *Depot: A device that can receive, dispatch and store items and fluids. Has separate frequencies for reception
+---         and dispatch. Can filter on both. Is powered by bv, and uses a static amount per item received or
+---         dispatched. Very low bv cost on idle. Does not require bv to be accessed. Will not accept transmissions of
+---         items or fluids it cannot accept (i.e, the container is full, no room for  items, different fluid from what
+---          is in the tank, tank is full, ect.)
 ---    *Resonance Pylon: Enables all DS devices in its radius to operate. Does not have a menu interface, but if the
 ---         player is hovering over it, the range of the device will be displayed, much as a queen's range is displayed
 ---         in a hive or apiary.
@@ -53,8 +50,7 @@
 --TODO: Filter screen for implementation for all devices that need it.
 --TODO: Implement Dispatcher
 --TODO: Implement Receiver
---TODO: Implement Item Depot
---TODO: Implement Fluid Depot
+--TODO: Implement Depot
 --TODO: Implement Resonance Pylon
 --
 
@@ -90,7 +86,7 @@ function init()
     api_set_devmode(true)
     define_test_object()
     RESONANCE_PYLON.define()
-    RESONANT_TRANSFER.DRAW_OBJECTS = { RESONANCE_PYLON} -- A list of all objects that need to do special drawing.
+    RESONANT_TRANSFER.DRAW_OBJECTS = {RESONANCE_PYLON} -- A list of all objects that need to do special drawing.
     return "Success"
 end
 
