@@ -34,20 +34,21 @@
 ---     however, process every machine on every tick and also guarantee that there will not be lag. So, I've written
 ---     a tick scheduler. Every device is responsible for storing the amount of ticks they need to wait until their
 ---     next operation. The tick scheduler has an active queue and a passive queue. At the start of each tick, the
----     scheduler iterates through all devices in the passive queue, and calculate the new tick delay values for
----     each. Any with a zero tick delay are added to the end of the active queue. After processing the passive
+---     scheduler iterates through all devices in the passive queue, upon which, each device gets the chance to update
+---     the amount of ticks left until they can fire an active event. After processing the passive
 ---     queue, a configurable amount (default 20) of devices is processed and removed from the active queue. If any
 ---     devices are left in the active queue at the end of the tick, they will be first in line to be processed next
 ---     time. Considering that devices will have a 5 tick delay before they are processed, this should mean that it
 ---     would take over 100 devices before the tick scheduler can get backed up.
 --- *Some devices need to have processing done EVERY tick (such as receivers updating if they can receive items/fluids).
----     These devices will have a separate queue, made specifically for quicker tasks.
+---     These devices will simply do their business when iterated over in the passive queue.
 ---
 
 --TODO: Frequency Selection Screen for implementation in all devices that need it.
 --TODO: Machine and Slot selection screen for implementation in all devices that need it.
 --TODO: Frequency management singleton
 --TODO: Filter screen for implementation for all devices that need it.
+--TODO: Work tabs into UI that I JUST FINISHED MODIFYING ASALKSJD:LA!
 --TODO: Implement Dispatcher
 --TODO: Implement Receiver
 --TODO: Implement Depot
@@ -62,7 +63,7 @@ RESONANT_TRANSFER.ID = "resonant_transfer"
 RESONANT_TRANSFER.TICK_SCHEDULE = {} -- A list of all devices that need to be ticked.
 RESONANT_TRANSFER.TICK_SCHEDULE.PASSIVE = {} -- Devices to process every tick
 RESONANT_TRANSFER.TICK_SCHEDULE.ACTIVE = {} -- Devices to process this tick
-RESONANT_TRANSFER.TICK_SCHEDULE.MAX_UPDATES_PER_TICK = 20
+RESONANT_TRANSFER.TICK_SCHEDULE.MAX_UPDATES_PER_TICK = 20 --TODO: Figure out how to put this in a config file.
 
 
 --- Register the mod with the game.
