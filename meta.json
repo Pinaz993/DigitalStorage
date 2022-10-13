@@ -1,0 +1,10 @@
+{
+  "resonant_transfer": {
+    "author": "Pinaz993",
+    "version": "0.1.0",
+    "summary": "Adds devices for transfering items between machines.",
+    "description": "Resonant Transfer devices use honeycore resonance to transfer matter from here to there.\nThey can import from a machine into the network, store items and fluids, and export from the network to other machines.",
+    "id": "resonant_transfer",
+    "name": "Resonant Transfer"
+  }
+}
